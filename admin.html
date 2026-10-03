@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Panel | Muhammad Wasif</title>
+
+    <link rel="stylesheet" href="admin.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+<!-- =====================================================
+     LOGIN SCREEN
+===================================================== -->
+
+<div class="login-screen" id="loginScreen">
+
+    <div class="login-box">
+
+        <div class="login-icon">
+            <i class="fa-solid fa-user-shield"></i>
+        </div>
+
+        <h1>Admin Panel</h1>
+
+        <p>Manage your personal portfolio</p>
+
+        <form id="loginForm">
+
+            <div class="input-box">
+                <i class="fa-solid fa-user"></i>
+                <input
+                    type="text"
+                    id="adminUsername"
+                    placeholder="Username"
+                    required
+                >
+            </div>
+
+            <div class="input-box">
+                <i class="fa-solid fa-lock"></i>
+
+                <input
+                    type="password"
+                    id="adminPassword"
+                    placeholder="Password"
+                    required
+                >
+
+                <button
+                    type="button"
+                    class="password-toggle"
+                    id="passwordToggle"
+                >
+                    <i class="fa-solid fa-eye"></i>
+                </button>
+            </div>
+
+            <button type="submit" class="login-btn">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                Login
+            </button>
+
+            <p class="login-error" id="loginError"></p>
+
+        </form>
+
+        <a href="index.html" class="back-home">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to Portfolio
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     ADMIN DASHBOARD
+===================================================== -->
+
+<div class="admin-app" id="adminApp">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+            <div class="logo-circle">
+                MW
+            </div>
+
+            <div>
+                <strong>MW Admin</strong>
+                <small>Portfolio Manager</small>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <button
+                class="sidebar-link active"
+                data-section="dashboard"
+            >
+                <i class="fa-solid fa-gauge-high"></i>
+                Dashboard
+            </button>
+
+            <button
+                class="sidebar-link"
+                data-section="about"
+            >
+                <i class="fa-solid fa-user"></i>
+                About Me
+            </button>
+
+            <button
+                class="sidebar-link"
+                data-section="skills"
+            >
+                <i class="fa-solid fa-code"></i>
+                Skills
+            </button>
+
+            <button
+                class="sidebar-link"
+                data-section="education"
+            >
+                <i class="fa-solid fa-graduation-cap"></i>
+                Education
+            </button>
+
+            <button
+                class="sidebar-link"
+                data-section="experience"
+            >
+                <i class="fa-solid fa-briefcase"></i>
+                Experience
+            </button>
+
+            <button
+                class="sidebar-link"
+                data-section="projects"
+            >
+                <i class="fa-solid fa-folder-open"></i>
+                Projects
+            </button>
+
+            <button
+                class="sidebar-link"
+                data-section="achievements"
+            >
+                <i class="fa-solid fa-trophy"></i>
+                Achievements
+            </button>
+
+            <button
+                class="sidebar-link"
+                data-section="certificates"
+            >
+                <i class="fa-solid fa-certificate"></i>
+                Certificates
+            </button>
+
+            <button
+                class="sidebar-link"
+                data-section="services"
+            >
+                <i class="fa-solid fa-laptop-code"></i>
+                Services
+            </button>
+
+            <button
+                class="sidebar-link"
+                data-section="gallery"
+            >
+                <i class="fa-solid fa-images"></i>
+                Gallery
+            </button>
+
+            <button
+                class="sidebar-link"
+                data-section="goals"
+            >
+                <i class="fa-solid fa-bullseye"></i>
+                Goals
+            </button>
+
+            <button
+                class="sidebar-link"
+                data-section="hobbies"
+            >
+                <i class="fa-solid fa-heart"></i>
+                Hobbies
+            </button>
+
+            <button
+                class="sidebar-link"
+                data-section="testimonials"
+            >
+                <i class="fa-solid fa-comments"></i>
+                Testimonials
+            </button>
+
+            <button
+                class="sidebar-link"
+                data-section="statistics"
+            >
+                <i class="fa-solid fa-chart-column"></i>
+                Statistics
+            </button>
+
+            <button
+                class="sidebar-link"
+                data-section="contact"
+            >
+                <i class="fa-solid fa-address-book"></i>
+                Contact
+            </button>
+
+            <button
+                class="sidebar-link"
+                data-section="faq"
+            >
+                <i class="fa-solid fa-circle-question"></i>
+                FAQ
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="index.html" target="_blank" class="sidebar-home">
+                <i class="fa-solid fa-globe"></i>
+                Main Website
+            </a>
+
+            <button id="logoutBtn" class="logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div>
+                <h2 id="pageTitle">Dashboard</h2>
+                <p>Manage your portfolio content</p>
+            </div>
+
+            <div class="topbar-actions">
+
+                <a
+                    href="index.html"
+                    target="_blank"
+                    class="view-site-btn"
+                >
+                    <i class="fa-solid fa-eye"></i>
+                    View Website
+                </a>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             DASHBOARD
+        ================================================== -->
+
+        <section class="admin-section active" id="dashboard">
+
+            <div class="welcome-card">
+
+                <div>
+                    <span>Welcome back 👋</span>
+
+                    <h1>
+                        Muhammad Wasif
+                    </h1>
+
+                    <p>
+                        Manage your personal portfolio from one place.
+                    </p>
+                </div>
+
+                <div class="welcome-icon">
+                    <i class="fa-solid fa-user-gear"></i>
+                </div>
+
+            </div>
+
+
+            <div class="stats-cards">
+
+                <div class="admin-stat">
+                    <div class="stat-icon blue">
+                        <i class="fa-solid fa-folder-open"></i>
+                    </div>
+
+                    <div>
+                        <strong id="projectCount">0</strong>
+                        <span>Projects</span>
+                    </div>
+                </div>
+
+
+                <div class="admin-stat">
+                    <div class="stat-icon purple">
+                        <i class="fa-solid fa-certificate"></i>
+                    </div>
+
+                    <div>
+                        <strong id="certificateCount">0</strong>
+                        <span>Certificates</span>
+                    </div>
+                </div>
+
+
+                <div class="admin-stat">
+                    <div class="stat-icon green">
+                        <i class="fa-solid fa-images"></i>
+                    </div>
+
+                    <div>
+                        <strong id="galleryCount">0</strong>
+                        <span>Gallery Items</span>
+                    </div>
+                </div>
+
+
+                <div class="admin-stat">
+                    <div class="stat-icon orange">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+
+                    <div>
+                        <strong id="achievementCount">0</strong>
+                        <span>Achievements</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+                <div class="panel-card">
+
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Quick Actions</h3>
+                            <p>Manage important portfolio sections.</p>
+                        </div>
+                    </div>
+
+                    <div class="quick-actions">
+
+                        <button data-section="projects">
+                            <i class="fa-solid fa-plus"></i>
+                            Add Project
+                        </button>
+
+                        <button data-section="certificates">
+                            <i class="fa-solid fa-certificate"></i>
+                            Certificates
+                        </button>
+
+                        <button data-section="gallery">
+                            <i class="fa-solid fa-image"></i>
+                            Gallery
+                        </button>
+
+                        <button data-section="about">
+                            <i class="fa-solid fa-user"></i>
+                            Edit About
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel-card">
+
+                    <div class="panel-heading">
+
+                        <div>
+                            <h3>Portfolio Status</h3>
+                            <p>Current local data status.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="status-row">
+                        <span>Portfolio</span>
+                        <strong class="status-online">
+                            <i class="fa-solid fa-circle"></i>
+                            Active
+                        </strong>
+                    </div>
+
+                    <div class="status-row">
+                        <span>Storage</span>
+                        <strong id="storageStatus">
+                            Local Browser
+                        </strong>
+                    </div>
+
+                    <div class="status-row">
+                        <span>Admin</span>
+                        <strong>Logged In</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             ABOUT
+        ================================================== -->
+
+        <section class="admin-section" id="about">
+
+            <div class="section-header">
+                <div>
+                    <h2>About Me</h2>
+                    <p>Update your personal introduction.</p>
+                </div>
+            </div>
+
+            <form class="admin-form" id="aboutForm">
+
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input
+                        type="text"
+                        id="aboutName"
+                        placeholder="Muhammad Wasif S/O Muhammad Asif"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Professional Title</label>
+                    <input
+                        type="text"
+                        id="aboutTitle"
+                        placeholder="Web Developer & Frontend Developer"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>About Description</label>
+                    <textarea
+                        id="aboutDescription"
+                        rows="6"
+                        placeholder="Write your introduction..."
+                    ></textarea>
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label>Current Education</label>
+                        <input
+                            type="text"
+                            id="aboutEducation"
+                            placeholder="Class 10"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label>Main Goal</label>
+                        <input
+                            type="text"
+                            id="aboutGoal"
+                            placeholder="Full Stack Web Developer"
+                        >
+                    </div>
+
+                </div>
+
+                <button class="save-btn" type="submit">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    Save About Information
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- =================================================
+             SKILLS
+        ================================================== -->
+
+        <section class="admin-section" id="skills">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Skills</h2>
+                    <p>Add and manage your technical skills.</p>
+                </div>
+
+                <button class="add-btn" id="addSkillBtn">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Skill
+                </button>
+
+            </div>
+
+            <div id="skillsList" class="admin-list"></div>
+
+        </section>
+
+
+        <!-- =================================================
+             EDUCATION
+        ================================================== -->
+
+        <section class="admin-section" id="education">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Education</h2>
+                    <p>Manage your education and courses.</p>
+                </div>
+
+                <button class="add-btn" id="addEducationBtn">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Education
+                </button>
+
+            </div>
+
+            <div id="educationList" class="admin-list"></div>
+
+        </section>
+
+
+        <!-- =================================================
+             EXPERIENCE
+        ================================================== -->
+
+        <section class="admin-section" id="experience">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Experience</h2>
+                    <p>Add your experience and learning journey.</p>
+                </div>
+
+                <button class="add-btn" id="addExperienceBtn">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Experience
+                </button>
+
+            </div>
+
+            <div id="experienceList" class="admin-list"></div>
+
+        </section>
+
+
+        <!-- =================================================
+             PROJECTS
+        ================================================== -->
+
+        <section class="admin-section" id="projects">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Projects</h2>
+                    <p>Add and manage your portfolio projects.</p>
+                </div>
+
+                <button class="add-btn" id="addProjectBtn">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Project
+                </button>
+
+            </div>
+
+            <div id="projectsList" class="admin-list"></div>
+
+        </section>
+
+
+        <!-- =================================================
+             ACHIEVEMENTS
+        ================================================== -->
+
+        <section class="admin-section" id="achievements">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Achievements</h2>
+                    <p>Manage your achievements.</p>
+                </div>
+
+                <button class="add-btn" id="addAchievementBtn">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Achievement
+                </button>
+
+            </div>
+
+            <div id="achievementsList" class="admin-list"></div>
+
+        </section>
+
+
+        <!-- =================================================
+             CERTIFICATES
+        ================================================== -->
+
+        <section class="admin-section" id="certificates">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Certificates</h2>
+                    <p>Manage your certificates.</p>
+                </div>
+
+                <button class="add-btn" id="addCertificateBtn">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Certificate
+                </button>
+
+            </div>
+
+            <div id="certificatesList" class="admin-list"></div>
+
+        </section>
+
+
+        <!-- =================================================
+             SERVICES
+        ================================================== -->
+
+        <section class="admin-section" id="services">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Services</h2>
+                    <p>Manage the services shown on your portfolio.</p>
+                </div>
+
+                <button class="add-btn" id="addServiceBtn">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Service
+                </button>
+
+            </div>
+
+            <div id="servicesList" class="admin-list"></div>
+
+        </section>
+
+
+        <!-- =================================================
+             GALLERY
+        ================================================== -->
+
+        <section class="admin-section" id="gallery">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Gallery</h2>
+                    <p>Manage your portfolio images.</p>
+                </div>
+
+                <button class="add-btn" id="addGalleryBtn">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Image
+                </button>
+
+            </div>
+
+            <div id="galleryList" class="gallery-admin-grid"></div>
+
+        </section>
+
+
+        <!-- =================================================
+             GOALS
+        ================================================== -->
+
+        <section class="admin-section" id="goals">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Goals</h2>
+                    <p>Manage your professional goals.</p>
+                </div>
+
+                <button class="add-btn" id="addGoalBtn">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Goal
+                </button>
+
+            </div>
+
+            <div id="goalsList" class="admin-list"></div>
+
+        </section>
+
+
+        <!-- =================================================
+             HOBBIES
+        ================================================== -->
+
+        <section class="admin-section" id="hobbies">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Hobbies & Interests</h2>
+                    <p>Manage your hobbies and interests.</p>
+                </div>
+
+                <button class="add-btn" id="addHobbyBtn">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Hobby
+                </button>
+
+            </div>
+
+            <div id="hobbiesList" class="admin-list"></div>
+
+        </section>
+
+
+        <!-- =================================================
+             TESTIMONIALS
+        ================================================== -->
+
+        <section class="admin-section" id="testimonials">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Testimonials</h2>
+                    <p>Manage testimonials displayed on your portfolio.</p>
+                </div>
+
+                <button class="add-btn" id="addTestimonialBtn">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Testimonial
+                </button>
+
+            </div>
+
+            <div id="testimonialsList" class="admin-list"></div>
+
+        </section>
+
+
+        <!-- =================================================
+             STATISTICS
+        ================================================== -->
+
+        <section class="admin-section" id="statistics">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Statistics</h2>
+                    <p>Manage portfolio statistics.</p>
+                </div>
+
+                <button class="add-btn" id="addStatisticBtn">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Statistic
+                </button>
+
+            </div>
+
+            <div id="statisticsList" class="admin-list"></div>
+
+        </section>
+
+
+        <!-- =================================================
+             CONTACT
+        ================================================== -->
+
+        <section class="admin-section" id="contact">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Contact Information</h2>
+                    <p>Update your public contact information.</p>
+                </div>
+
+            </div>
+
+            <form class="admin-form" id="contactForm">
+
+                <div class="form-group">
+                    <label>Phone Number</label>
+
+                    <input
+                        type="text"
+                        id="contactPhone"
+                        placeholder="03007024050"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        id="contactEmail"
+                        placeholder="your@email.com"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>GitHub URL</label>
+
+                    <input
+                        type="url"
+                        id="contactGithub"
+                        placeholder="https://github.com/username"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label>Profile Image URL</label>
+
+                    <input
+                        type="url"
+                        id="contactImage"
+                        placeholder="https://..."
+                    >
+                </div>
+
+                <button class="save-btn" type="submit">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    Save Contact Information
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- =================================================
+             FAQ
+        ================================================== -->
+
+        <section class="admin-section" id="faq">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>FAQ</h2>
+                    <p>Manage frequently asked questions.</p>
+                </div>
+
+                <button class="add-btn" id="addFaqBtn">
+                    <i class="fa-solid fa-plus"></i>
+                    Add FAQ
+                </button>
+
+            </div>
+
+            <div id="faqList" class="admin-list"></div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div class="toast" id="toast">
+    <i class="fa-solid fa-check"></i>
+    <span id="toastMessage">Saved successfully.</span>
+</div>
+
+
+<script src="admin.js"></script>
+
+</body>
+</html>
